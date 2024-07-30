@@ -1,6 +1,6 @@
-# Arch
+# NixOS
 
-This is my personal arch dotfiles.
+This is my personal nix dotfiles.
 I have not tested in any other system than my own.
 
 OS - NixOS  
