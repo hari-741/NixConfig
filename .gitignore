@@ -1,0 +1,9 @@
+./btop
+./dunst
+./hypr
+./neofetch
+./rofi
+./scripts
+./waybar
+flake.lock
+mimeapps.list
