@@ -49,8 +49,13 @@
     fira-code-nerdfont
   ];
 
-  home.file.".p10k.zsh" = {
-    source = ./.p10k.zsh;
+  home.file."Configs/sudo.plugin.zsh" = {
+    source = ./sudo.plugin.zsh;
+    executable = true;
+  };
+
+  home.file."Configs/extract.plugin.zsh" = {
+    source = ./extract.plugin.zsh;
     executable = true;
   };
 

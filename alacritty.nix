@@ -9,7 +9,7 @@
                 opacity = 0.5;
                 padding = {
                     x = 20;
-                    y = 20;
+                    # y = 20;
                 };
                 position = {
                     x = 7;
