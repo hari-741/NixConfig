@@ -2,14 +2,14 @@
 
 {
   imports = [
-    ./alacritty.nix
-    ./fastfetch.nix
-    ./feh.nix
-    ./git.nix
-    ./mpv.nix
-    ./vim.nix
-    ./zathura.nix
-    ./zsh.nix
+    ./cli-apps/fastfetch.nix
+    ./cli-apps/git.nix
+    ./cli-apps/vim.nix
+    ./gui-apps/alacritty.nix
+    ./gui-apps/feh.nix
+    ./gui-apps/mpv.nix
+    ./gui-apps/zathura.nix
+    ./zsh/zsh.nix
   ];
   home.username = "hari";
   home.homeDirectory = "/home/hari";
@@ -23,39 +23,34 @@
     fd
     feh
     libnotify
-    mangohud
-    protonup
     starship
     zsh
 
     alacritty
     brave
     galculator
+    gnome.nautilus
     guvcview
     libreoffice-fresh
     mpv
     pavucontrol
     rofi-wayland
-    steam
     transmission-gtk
     vscode
     waybar
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.tumbler
     zathura
 
     dejavu_fonts
     fira-code-nerdfont
   ];
 
-  home.file."Configs/sudo.plugin.zsh" = {
-    source = ./sudo.plugin.zsh;
+  home.file."Configs/zsh/sudo.plugin.zsh" = {
+    source = ./zsh/sudo.plugin.zsh;
     executable = true;
   };
 
-  home.file."Configs/extract.plugin.zsh" = {
-    source = ./extract.plugin.zsh;
+  home.file."Configs/zsh/extract.plugin.zsh" = {
+    source = ./zsh/extract.plugin.zsh;
     executable = true;
   };
 

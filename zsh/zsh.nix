@@ -15,8 +15,8 @@ in
     shellAliases = zshAliases;
     syntaxHighlighting.enable = true;
     initExtra = "
-      source ~/Configs/sudo.plugin.zsh
-      source ~/Configs/extract.plugin.zsh
+      source ~/Configs/zsh/sudo.plugin.zsh
+      source ~/Configs/zsh/extract.plugin.zsh
       ";
   };
 

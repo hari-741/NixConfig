@@ -9,11 +9,28 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.resumeDevice = "/dev/nvme0n1p2";
+  boot.resumeDevice = "/dev/disk/by-uuid/12827ae8-621d-4407-bc22-f15da497c711";
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
   # boot.tmp.cleanOnBoot = true;
-  boot.kernelParams = ["quiet" "splash"];
+  boot.kernelParams = ["quiet" "splash" "i915.enable_guc=2"];
+
+  boot.extraModprobeConfig = ''
+    blacklist nouveau
+    options nouveau modeset=0
+  '';
+  services.udev.extraRules = ''
+    # Remove NVIDIA USB xHCI Host Controller devices, if present
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+    # Remove NVIDIA USB Type-C UCSI devices, if present
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+    # Remove NVIDIA Audio devices, if present
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+    # Remove NVIDIA VGA/3D controller devices
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+  '';
+  boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.timeout = 0;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -21,30 +38,11 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [ intel-media-sdk ];
   };
 
   hardware.bluetooth.enable = true;
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = true;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    open = false;  # Use the NVidia open source kernel module
-  };  
    
-  hardware.nvidia.prime = {
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
-  };
-
   networking.hostName = "Ark";
   networking.networkmanager.enable = true; 
 
@@ -81,6 +79,8 @@
   services.auto-cpufreq.settings = {
     battery = {
       governor = "powersave";
+      scaling_min_freq = 800000;
+      scaling_max_freq = 1500000;
       turbo = "never";
     };
     charger = {
@@ -91,14 +91,13 @@
   services.thermald.enable = true;
   powerManagement.powertop.enable = true;
 
-  services.blueman.enable = true;
   services.hypridle.enable = true;
 
   services.gvfs.enable = true;
   services.libinput.enable = true;
-  services.printing.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
 
+  services.blueman.enable = true;
+  services.printing.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -147,18 +146,14 @@
     # WLR_DRM_DEVICES,/dev/dri/card1
     # WLR_DRM_NO_ATOMIC,1
     NIXOS_OZONE_WL = "1";
-    STEAM_EXTRA_COMPAT_TOOLS = "/home/hari/.steam/root/compatibilitytools.d/";
   };
 
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true;
+    xwayland.enable = false;
   };
 
   programs.zsh.enable = true;
-
-  programs.steam.gamescopeSession.enable = true;
-  programs.gamemode.enable = true;
  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
