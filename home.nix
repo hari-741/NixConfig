@@ -2,13 +2,13 @@
 
 {
   imports = [
-    ./cli-apps/fastfetch.nix
-    ./cli-apps/git.nix
-    ./cli-apps/vim.nix
-    ./gui-apps/alacritty.nix
-    ./gui-apps/feh.nix
-    ./gui-apps/mpv.nix
-    ./gui-apps/zathura.nix
+    ./cli/fastfetch.nix
+    ./cli/vim.nix
+    ./gui/alacritty.nix
+    ./gui/feh.nix
+    ./gui/mpv.nix
+    ./gui/zathura.nix
+    ./conf/git.nix
     ./zsh/zsh.nix
   ];
   home.username = "hari";
@@ -29,7 +29,6 @@
     alacritty
     brave
     galculator
-    gnome.nautilus
     guvcview
     libreoffice-fresh
     mpv
@@ -38,6 +37,10 @@
     transmission-gtk
     vscode
     waybar
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.tumbler
+    xfce.xfconf
     zathura
 
     dejavu_fonts

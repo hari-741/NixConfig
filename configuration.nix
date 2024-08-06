@@ -9,32 +9,42 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.resumeDevice = "/dev/disk/by-uuid/12827ae8-621d-4407-bc22-f15da497c711";
+  time.hardwareClockInLocalTime = true;
+
+  # boot.resumeDevice = "";
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
   # boot.tmp.cleanOnBoot = true;
   boot.kernelParams = ["quiet" "splash" "i915.enable_guc=2"];
-
+  boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
   boot.extraModprobeConfig = ''
     blacklist nouveau
     options nouveau modeset=0
   '';
-  services.udev.extraRules = ''
-    # Remove NVIDIA USB xHCI Host Controller devices, if present
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
-    # Remove NVIDIA USB Type-C UCSI devices, if present
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
-    # Remove NVIDIA Audio devices, if present
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
-    # Remove NVIDIA VGA/3D controller devices
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
-  '';
-  boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.timeout = 0;
-  boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.loader = {
+    timeout = 5;
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      # timeoutStyle = "countdown";
+      useOSProber = true;
+    };
+    grub2-theme = {
+      enable = true;
+      theme = "whitesur";
+      icon = "whitesur";
+      # screen = "";
+      splashImage = builtins.fetchurl {
+        url = "file:///home/hari/Configs/pic/16.png";
+        sha256 = "91e8142bad98b48ec6dcffe922a7167451a5a8de12d7fe3138e98e6e83f124a1";
+      };
+      footer = true;
+    };
+  };
+  
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -69,6 +79,17 @@
   # xdg.portable = true;
   # xdg.portable.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   
+  services.udev.extraRules = ''
+    # Remove NVIDIA USB xHCI Host Controller devices, if present
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+    # Remove NVIDIA USB Type-C UCSI devices, if present
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+    # Remove NVIDIA Audio devices, if present
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+    # Remove NVIDIA VGA/3D controller devices
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+  '';
+
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -96,8 +117,8 @@
   services.gvfs.enable = true;
   services.libinput.enable = true;
 
-  services.blueman.enable = true;
-  services.printing.enable = true;
+  # services.blueman.enable = true;
+  # services.printing.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -123,16 +144,13 @@
     eza
     gh
     git
-    gvfs
-    hplip
+    # hplip
     hypridle
     hyprlock
     hyprpaper
     hyprshot
-    jdk
     libsForQt5.qt5.qtgraphicaleffects
     ntfs3g
-    python3
     tldr
     unrar
     unzip
@@ -150,7 +168,6 @@
 
   programs.hyprland = {
     enable = true;
-    xwayland.enable = false;
   };
 
   programs.zsh.enable = true;

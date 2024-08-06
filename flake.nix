@@ -5,10 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.url = "github:danth/stylix";
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, grub2-themes, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -21,6 +21,7 @@
           inherit system;
           modules = [
           ./configuration.nix
+          grub2-themes.nixosModules.default
           ];
         };
       };
@@ -29,7 +30,6 @@
           inherit pkgs;
           modules = [
           ./home.nix
-          stylix.homeManagerModules.stylix
           ];
         };
       };
