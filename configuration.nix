@@ -11,7 +11,7 @@
 
   time.hardwareClockInLocalTime = true;
 
-  # boot.resumeDevice = "";
+  boot.resumeDevice = "/dev/disk/by-uuid/12827ae8-621d-4407-bc22-f15da497c711";
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
   # boot.tmp.cleanOnBoot = true;
@@ -29,16 +29,14 @@
       enable = true;
       device = "nodev";
       efiSupport = true;
-      # timeoutStyle = "countdown";
       useOSProber = true;
     };
     grub2-theme = {
       enable = true;
       theme = "whitesur";
       icon = "whitesur";
-      # screen = "";
       splashImage = builtins.fetchurl {
-        url = "file:///home/hari/Configs/pic/16.png";
+        url = "file:///home/hari/Configs/pic/boot.png";
         sha256 = "91e8142bad98b48ec6dcffe922a7167451a5a8de12d7fe3138e98e6e83f124a1";
       };
       footer = true;

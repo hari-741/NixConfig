@@ -2,6 +2,7 @@
 
 {
     programs.vim = {
+        enable = true;
         defaultEditor = true;
         settings = {
             background = "dark";
@@ -27,16 +28,6 @@
             filetype on
             filetype indent on
             syntax on
-            wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
         ";
-        plugins = with pkgs.vimPlugins; [
-            airline
-            ale
-            catppuccin-vim
-            fugitive
-            gitgutter
-            nerdtree
-            surround
-        ];
     };
 }

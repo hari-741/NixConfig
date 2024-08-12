@@ -2,12 +2,14 @@
 
 {
   imports = [
+    ./cli/btop.nix
     ./cli/fastfetch.nix
     ./cli/vim.nix
+
     ./gui/alacritty.nix
-    ./gui/feh.nix
     ./gui/mpv.nix
     ./gui/zathura.nix
+    
     ./conf/git.nix
     ./zsh/zsh.nix
   ];
@@ -44,7 +46,9 @@
     zathura
 
     dejavu_fonts
-    fira-code-nerdfont
+    fira-code-nerdfont    
+
+    chromium
   ];
 
   home.file."Configs/zsh/sudo.plugin.zsh" = {
