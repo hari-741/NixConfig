@@ -10,7 +10,11 @@
     ./gui/mpv.nix
     ./gui/zathura.nix
     
+    ./theme/waybar.nix
+
     ./conf/git.nix
+    ./conf/dunst.nix
+    
     ./zsh/zsh.nix
   ];
   home.username = "hari";
@@ -47,8 +51,6 @@
 
     dejavu_fonts
     fira-code-nerdfont    
-
-    chromium
   ];
 
   home.file."Configs/zsh/sudo.plugin.zsh" = {
@@ -73,7 +75,7 @@
   gtk = {
     enable = true;
 
-    theme.package = import ./catppuccin-gtk.nix { inherit pkgs; };
+    theme.package = import ./theme/catppuccin-gtk.nix { inherit pkgs; };
     theme.name = "catppuccin-mocha-blue-standard+default";
 
     cursorTheme.package = pkgs.bibata-cursors;

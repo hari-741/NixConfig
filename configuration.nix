@@ -34,7 +34,7 @@
     grub2-theme = {
       enable = true;
       theme = "whitesur";
-      icon = "whitesur";
+      icon = "white";
       splashImage = builtins.fetchurl {
         url = "file:///home/hari/Configs/pic/boot.png";
         sha256 = "91e8142bad98b48ec6dcffe922a7167451a5a8de12d7fe3138e98e6e83f124a1";
@@ -91,7 +91,7 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
+    theme = "${import ./theme/sddm-theme.nix { inherit pkgs; }}";
   };
 
   services.auto-cpufreq.enable = true;
