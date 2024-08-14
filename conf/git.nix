@@ -9,7 +9,6 @@
             init.defaultBranch = "main";
             core.editor = "code --wait";
             core.autocrlf = "input";
-            # core.excludesfile = "~/.gitignore";
         };
     };
 }

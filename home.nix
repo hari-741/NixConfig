@@ -2,6 +2,9 @@
 
 {
   imports = [
+    ./conf/git.nix
+    ./conf/dunst.nix
+
     ./cli/btop.nix
     ./cli/fastfetch.nix
     ./cli/vim.nix
@@ -10,10 +13,12 @@
     ./gui/mpv.nix
     ./gui/zathura.nix
     
-    ./theme/waybar.nix
+    ./hypr/hyprland.nix
+    ./hypr/hypridle.nix
+    ./hypr/hyprlock.nix
+    ./hypr/hyprpaper.nix
 
-    ./conf/git.nix
-    ./conf/dunst.nix
+    ./theme/waybar.nix
     
     ./zsh/zsh.nix
   ];

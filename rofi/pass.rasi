@@ -1,0 +1,24 @@
+@theme ".config/rofi/arc"
+
+* {
+    background-color:       @background;
+    text-color:             @foreground;
+}
+
+window {
+    width:        	        400px;
+    height:        	        100px;
+    padding:    	        20px;
+    border:		            0px 0px 2px 0px;
+    border-radius:          8px;
+    border-color:           @selected;
+    location:               0;
+    x-offset:               0;
+    y-offset:               -4%;
+}
+
+entry {
+    expand: 		        true;
+    width: 		            150px;
+    text-color:		        @selected;
+}
