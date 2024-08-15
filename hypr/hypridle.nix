@@ -17,13 +17,6 @@
                 }
                 {
                     timeout = 240;
-                    on-timeout = "brightnessctl -s set 10";
-                    on-resume = "brightnessctl -r";                 
-                }
-
-
-                {
-                    timeout = 240;
                     on-timeout = "hyprctl dispatch dpms off";
                     on-resume = "hyprctl dispatch dpms on"; 
                 }

@@ -192,9 +192,6 @@
 
             bindl = [
                 ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-                ",switch:Lid Switch,exec,hyprlock"
-                ",switch:on:Lid Switch,exec,hyprctl keyword monitor 'eDP-1, disable'"
-                ",switch:off:Lid Switch,exec,hyprctl keyword monitor 'eDP-1, 1920x1080, 0x0, 1'"
             ];
         };
     };

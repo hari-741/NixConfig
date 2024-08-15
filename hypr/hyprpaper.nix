@@ -5,8 +5,8 @@
         enable = true;
         settings = {
             splash = false;
-            preload = [ "/home/hari/Pictures/Wallpaper/11.jpg" ];
-            wallpaper = [ ",/home/hari/Pictures/Wallpaper/11.jpg" ];  
+            preload = [ "/home/hari/Configs/pic/background.jpg" ];
+            wallpaper = [ ",/home/hari/Configs/pic/background.jpg" ];  
         };
     };
 }
