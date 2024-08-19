@@ -58,12 +58,12 @@
     fira-code-nerdfont    
   ];
 
-  home.file."Configs/zsh/sudo.plugin.zsh" = {
+  home.file."NixConfig/zsh/sudo.plugin.zsh" = {
     source = ./zsh/sudo.plugin.zsh;
     executable = true;
   };
 
-  home.file."Configs/zsh/extract.plugin.zsh" = {
+  home.file."NixConfig/zsh/extract.plugin.zsh" = {
     source = ./zsh/extract.plugin.zsh;
     executable = true;
   };

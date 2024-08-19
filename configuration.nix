@@ -11,7 +11,7 @@
 
   time.hardwareClockInLocalTime = true;
 
-  boot.resumeDevice = "/dev/disk/by-uuid/12827ae8-621d-4407-bc22-f15da497c711";
+  # boot.resumeDevice = "/dev/disk/by-uuid/12827ae8-621d-4407-bc22-f15da497c711";
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
   # boot.tmp.cleanOnBoot = true;
@@ -36,7 +36,7 @@
       theme = "whitesur";
       icon = "white";
       splashImage = builtins.fetchurl {
-        url = "file:///home/hari/Configs/pic/boot.png";
+        url = "file:///home/hari/NixConfig/pic/boot.png";
         sha256 = "91e8142bad98b48ec6dcffe922a7167451a5a8de12d7fe3138e98e6e83f124a1";
       };
       footer = true;

@@ -9,7 +9,7 @@ elif [[ "$connected" =~ "disabled" ]]; then
 	toggle="󰖩  Enable Wi-Fi"
 fi
 
-chosen_network=$(echo -e "$toggle\n$list" | uniq -u | rofi -dmenu -config ~/Configs/rofi/wifi.rasi -p "Wi-Fi SSID: " )
+chosen_network=$(echo -e "$toggle\n$list" | uniq -u | rofi -dmenu -config ~/NixConfig/rofi/wifi.rasi -p "Wi-Fi SSID: " )
 read -r chosen_id <<< "${chosen_network:3}"
 
 if [ "$chosen_network" = "" ]; then
@@ -25,7 +25,7 @@ else
 		nmcli connection up id "$chosen_id" | grep "successfully" && dunstify "WIFI" "Connected to $success_message" -i network-wireless
 	else
 		if [[ "$chosen_network" =~ "" ]]; then
-			wifi_password=$(rofi -dmenu -config ~/Configs/rofi/pass.rasi -p "Password: " )
+			wifi_password=$(rofi -dmenu -config ~/NixConfig/rofi/pass.rasi -p "Password: " )
 		fi
 		nmcli device wifi connect "$chosen_id" password "$wifi_password" | grep "successfully" && dunstify  "WIFI" "Connected to $success_message" -i network-wireless
     fi

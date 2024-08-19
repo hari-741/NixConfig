@@ -15,8 +15,8 @@ in
     shellAliases = zshAliases;
     syntaxHighlighting.enable = true;
     initExtra = "
-      source ~/Configs/zsh/sudo.plugin.zsh
-      source ~/Configs/zsh/extract.plugin.zsh
+      source ~/NixConfig/zsh/sudo.plugin.zsh
+      source ~/NixConfig/zsh/extract.plugin.zsh
       ";
   };
 
@@ -49,7 +49,7 @@ in
         substitutions = {
           "Documents" = "󰈙 ";
           "Downloads" = " ";
-          "Configs" = " ";
+          "NixConfig" = " ";
           "Pictures" = " ";
           "Studies" = " ";
           "Win" = " ";

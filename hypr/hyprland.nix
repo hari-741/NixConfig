@@ -144,8 +144,8 @@
                 ", XF86MonBrightnessUp, exec, brightnessctl -q s +5%"
                 ", XF86MonBrightnessDown, exec, brightnessctl -q s 5%-"
 
-                ", PRINT, exec, ~/Configs/scripts/scrsht.sh"
-                "SUPER, Alt_R, exec, ~/Configs/scripts/wifi.sh"
+                ", PRINT, exec, ~/NixConfig/scripts/scrsht.sh"
+                "SUPER, Alt_R, exec, ~/NixConfig/scripts/wifi.sh"
 
                 "SUPER, left, movefocus, l"
                 "SUPER, right, movefocus, r"

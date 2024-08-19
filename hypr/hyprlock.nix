@@ -10,7 +10,7 @@
 
             background = [
                 {
-                    path = "/home/hari/Configs/pic/lock.jpg";
+                    path = "/home/hari/NixConfig/pic/lock.jpg";
                     blur_passes = 0;
                     
                     noise = 0.0117;

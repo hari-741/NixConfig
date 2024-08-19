@@ -3,13 +3,13 @@
 let
     img = builtins.fetchurl {
         name = "sddm.jpg";
-        url = "file:///home/hari/Configs/pic/sddm.jpg";
+        url = "file:///home/hari/NixConfig/pic/sddm.jpg";
         sha256 = "f77e9f92ff65debf011f0882f686217ae0630e42527eb0a353d7f6977f250a3a";
     };
 
     conf = builtins.fetchurl {
         name = "theme.conf";
-        url = "file:///home/hari/Configs/theme/theme.conf";
+        url = "file:///home/hari/NixConfig/theme/theme.conf";
         sha256 = "999fd1baca499b9b11eb3a38b21679568c98a6480d4ebbc6755b9ade4c5e84cb";
     };
 in
