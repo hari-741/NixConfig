@@ -41,7 +41,6 @@
     brave
     galculator
     guvcview
-    libreoffice-fresh
     mpv
     pavucontrol
     rofi-wayland
