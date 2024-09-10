@@ -13,7 +13,7 @@
             "image/jpeg"="feh-dir.desktop";
             "image/png"="feh.desktop";
             "image/jpg"="feh.desktop";
-            "application/pdf"="org.pwmt.zathura.desktop";
+            "application/pdf"="zathura.desktop";
             "text/html"="brave-browser.desktop";
             "x-scheme-handler/http"="brave-browser.desktop";
             "x-scheme-handler/https"="brave-browser.desktop";

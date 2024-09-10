@@ -41,20 +41,22 @@
     brave
     galculator
     guvcview
+    libreoffice-fresh
     mpv
     pavucontrol
     rofi-wayland
     transmission-gtk
     vscode
     waybar
+    zathura
+    
     xfce.thunar
     xfce.thunar-volman
     xfce.tumbler
     xfce.xfconf
-    zathura
 
     dejavu_fonts
-    fira-code-nerdfont    
+    fira-code-nerdfont
   ];
 
   home.file."NixConfig/zsh/sudo.plugin.zsh" = {

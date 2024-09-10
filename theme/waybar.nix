@@ -150,7 +150,7 @@
             * {
                 font-family: "FiraCode";
                 font-weight: bold;
-                border-radius: 15px;
+                border-radius: 10px;
             }
 
             window#waybar {
