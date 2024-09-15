@@ -57,6 +57,10 @@
 
     dejavu_fonts
     fira-code-nerdfont
+
+    (poetry.override { python3 = python312 ;})
+    python312
+    python312Packages.poetry-core
   ];
 
   home.file."NixConfig/zsh/sudo.plugin.zsh" = {

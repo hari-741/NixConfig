@@ -63,7 +63,7 @@
             urgency_low = {
                 background = "#24273A";
                 foreground = "#CAD3F5";
-                frame_color = "#fab387";
+                frame_color = "#FAB387";
                 timeout = 5;
             };
 
@@ -76,7 +76,7 @@
             urgency_critical = {
                 background = "#24273A";
                 foreground = "#CAD3F5";
-                frame_color = "#f38ba8";
+                frame_color = "#F38BA8";
                 timeout = 0;
             };
         };
